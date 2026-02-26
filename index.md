@@ -57,12 +57,12 @@ Branching, committing, opening PRs, and the review process used throughout the l
 1. [Explore the API](lab/tasks/required/task-1.md) — `Swagger UI`, authentication, and the API contract.
 2. [Enable and debug the interactions endpoint](lab/tasks/required/task-2.md) — trace the bug between code and database schema.
 3. [Implement the learners endpoint](lab/tasks/required/task-3.md) — follow the existing pattern to add a new endpoint.
-4. [Deploy to a hardened VM](lab/tasks/required/task-4.md) — firewall, `fail2ban`, SSH restrictions, and deployment.
+4. Deploy to a hardened VM — firewall, `fail2ban`, SSH restrictions, and deployment.
 
 ### Optional tasks
 
 1. [Implement the `/outcomes` endpoint](lab/tasks/optional/task-1.md)
-2. [Set up CI with `GitHub Actions`](lab/tasks/optional/task-2.md)
+2. Set up CI with `GitHub Actions`
 
 ## Application source
 

@@ -73,7 +73,7 @@ Title: `[Task] Back-end Testing`
 #### 1.3.2. Add a new unit test
 
 1. [Open the file](../../../wiki/vs-code.md#open-the-file):
-   [`tests/unit/test_interactions.py`](../../../tests/unit/test_interactions.py).
+   [`backend/tests/unit/test_interactions.py`](../../../backend/tests/unit/test_interactions.py).
 2. Add a new unit test that targets the following boundary-value case:
 
    An interaction where `item_id` and `learner_id` are different values — for example, `item_id=1` and `learner_id=2`. When filtering by `item_id=1`, this interaction should appear in the results.
@@ -91,12 +91,12 @@ Title: `[Task] Back-end Testing`
    The output should be similar to this:
 
    ```terminal
-   FAILED tests/unit/test_interactions.py::test_filter_excludes_interaction_with_different_learner_id - AssertionError: assert 0 == 1
+   FAILED backend/tests/unit/test_interactions.py::test_filter_excludes_interaction_with_different_learner_id - AssertionError: assert 0 == 1
    ```
 
    This line means the following:
    - The test failed (`FAILED`).
-   - The test is in the file `tests/unit/test_interactions.py`.
+   - The test is in the file `backend/tests/unit/test_interactions.py`.
    - The name of the failing test is `test_filter_excludes_interaction_with_different_learner_id`.
    - The failed assertion is `assert 0 == 1` — the filter returned 0 interactions, but 1 was expected.
 
@@ -191,10 +191,10 @@ return [i for i in interactions if i.item_id == item_id]
 #### 1.4.3. Add two end-to-end tests
 
 1. [Open the file](../../../wiki/vs-code.md#open-the-file):
-   [`tests/e2e/test_interactions.py`](../../../tests/e2e/test_interactions.py).
+   [`backend/tests/e2e/test_interactions.py`](../../../backend/tests/e2e/test_interactions.py).
 2. Add two end-to-end tests that cover the following boundary-value cases:
 
-   - Test 1: `GET /interactions/` returns [HTTP status code](../../../wiki/http.md#status-code) `200`.
+   - Test 1: `GET /interactions/` returns [HTTP status code](../../../wiki/http.md#http-response-status-code) `200`.
    - Test 2: `GET /interactions/` response body is a [JSON](../../../wiki/file-formats.md#json) array.
 
    <details><summary>Click to open a hint</summary>
@@ -234,8 +234,8 @@ return [i for i in interactions if i.item_id == item_id]
    The output should be similar to this:
 
    ```terminal
-   FAILED tests/e2e/test_interactions.py::test_get_interactions_returns_200 - AssertionError: assert 500 == 200
-   FAILED tests/e2e/test_interactions.py::test_get_interactions_response_is_a_list - ...
+   FAILED backend/tests/e2e/test_interactions.py::test_get_interactions_returns_200 - AssertionError: assert 500 == 200
+   FAILED backend/tests/e2e/test_interactions.py::test_get_interactions_response_is_a_list - ...
    ```
 
    The `500` status code means the server encountered an internal error while building the response.
