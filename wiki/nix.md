@@ -164,7 +164,6 @@ Complete these steps:
    nil 2025-06-13
    ```
 
-
 ### Install `nixfmt`
 
 > `nixfmt` is a formatter for [`Nix`](#what-is-nix).
