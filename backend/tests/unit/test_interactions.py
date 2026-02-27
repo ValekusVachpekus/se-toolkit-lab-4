@@ -33,3 +33,39 @@ def test_filter_excludes_interaction_with_different_learner_id() -> None:
     assert len(result) == 1
     assert result[0].item_id == 1
     assert result[0].learner_id == 2
+
+
+def test_filter_returns_empty_when_no_item_id_matches() -> None:
+    interactions = [_make_log(1, 1, 2), _make_log(2, 2, 3)]
+    result = _filter_by_item_id(interactions, 99)
+    assert result == []
+
+
+def test_filter_returns_empty_for_single_non_matching_item() -> None:
+    result = _filter_by_item_id([_make_log(1, 1, 5)], 6)
+    assert result == []
+
+
+def test_filter_returns_entire_list_when_all_items_match_item_id() -> None:
+    interactions = [_make_log(1, 1, 7), _make_log(2, 2, 7), _make_log(3, 3, 7)]
+    result = _filter_by_item_id(interactions, 7)
+    assert result == interactions
+
+
+def test_filter_returns_only_matching_subset_from_mixed_list() -> None:
+    interactions = [
+        _make_log(1, 1, 3),
+        _make_log(2, 2, 4),
+        _make_log(3, 3, 3),
+        _make_log(4, 4, 5),
+    ]
+    result = _filter_by_item_id(interactions, 3)
+    assert len(result) == 2
+    assert all(i.item_id == 3 for i in result)
+
+
+def test_filter_with_zero_as_item_id() -> None:
+    interactions = [_make_log(1, 1, 0), _make_log(2, 2, 1)]
+    result = _filter_by_item_id(interactions, 0)
+    assert len(result) == 1
+    assert result[0].item_id == 0
