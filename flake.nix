@@ -28,10 +28,18 @@
             '';
             commandGroups = {
               "1-front-tools" = [
-                pkgs.nodejs_22
+                {
+                  packages = {
+                    node = pkgs.nodejs_22;
+                  };
+                }
               ];
               "2-back-tools" = [
-                pkgs.uv
+                {
+                  packages = {
+                    uv = pkgs.uv;
+                  };
+                }
               ];
               "3-lint-scripts" = [
                 {
@@ -62,7 +70,11 @@
                 }
               ];
               "4-lint-tools" = [
-                pkgs.lychee
+                {
+                  packages = {
+                    lychee = pkgs.lychee;
+                  };
+                }
               ];
             };
           };
